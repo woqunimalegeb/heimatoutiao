@@ -1,6 +1,7 @@
 <template>
   <div id='app'>
 app跟组件
+<i class="toutiao toutiao-shouji"></i>
   </div>
 </template>
 
