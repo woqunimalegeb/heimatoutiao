@@ -71,6 +71,7 @@ export default {
       const { data: res } = await login(this.form)
       console.log(res.data)
       Toast.success('登录成功')
+      this.$router.push('/profile')
       this.$store.commit('setUser', res.data)
     },
     async onSendCode () {
