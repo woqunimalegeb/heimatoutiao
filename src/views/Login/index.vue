@@ -3,7 +3,11 @@
 <van-nav-bar
   title="登录"
  class="page-nav-bar"
-/>
+>
+  <template #left>
+  <van-icon @click="$router.back()" name="cross" color="#fff" />
+ </template>
+</van-nav-bar>
 <van-form ref="form" @submit="onSubmit">
   <van-field
     v-model="form.mobile"
@@ -68,11 +72,11 @@ export default {
 
   methods: {
     async  onSubmit () {
-      const { data: res } = await login(this.form)
-      console.log(res.data)
+      const res = await login(this.form)
+      console.log(res)
       Toast.success('登录成功')
       this.$router.push('/profile')
-      this.$store.commit('setUser', res.data)
+      this.$store.commit('setUser', res)
     },
     async onSendCode () {
       try {
