@@ -2,7 +2,7 @@
   <div class="layout-container">
 <router-view />
 <van-tabbar route>
-  <van-tabbar-item to="/home" icon="home-o">
+  <van-tabbar-item to="/" icon="home-o">
     <span class="text">首页</span>
     <template #icon>
       <i class="toutiao toutiao-shouye"></i>
