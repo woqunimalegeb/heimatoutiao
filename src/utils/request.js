@@ -2,10 +2,11 @@ import axios from 'axios'
 import { Toast } from 'vant'
 import store from '@/store'
 const request = axios.create({
+  // baseURL: 'http://ttapi.research.itcast.cn/app'
   baseURL: 'http://toutiao-app.itheima.net'
 })
 request.interceptors.request.use(config => {
-  if (config.url.indexOf('/user') !== -1) {
+  if (store.state.user) {
     config.headers.Authorization = 'Bearer ' + store.state.user.token
   }
   if (config.url !== '/v1_1/articles') {

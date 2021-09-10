@@ -9,16 +9,11 @@
   finished-text="没有更多了"
   @load="onLoad"
 >
+<ArticleItem
+v-for="item in list"
+:key="item.art_id"
+:articleItem='item'/>
 
-<van-cell v-for="item in list" :key="item.art_id" :title="item.title"  value="内容" >
-  <template #label>
-   <div class="label-box">
-    <span>作者</span>
-    <span>作者</span>
-    <span>作者</span>
-   </div>
-  </template>
-</van-cell>
 </van-list>
 </van-pull-refresh>
 
@@ -28,6 +23,7 @@
 <script>
 import { getArticleList } from '@/api/article.js'
 import { Toast } from 'vant'
+import ArticleItem from '@/components/articleItem.vue'
 export default {
   data () {
     return {
@@ -49,7 +45,9 @@ export default {
   created () {
 
   },
-
+  components: {
+    ArticleItem
+  },
   methods: {
     async onLoad () {
       // 1.发送请求获取数据
@@ -59,7 +57,7 @@ export default {
           timestamp: this.preTimestamp,
           with_top: 1
         })
-        if (Math.random() > 0.5) {
+        if (Math.random() > 0.2) {
           console.log(13)
         }
         this.list.push(...res.results)
@@ -103,12 +101,8 @@ export default {
 
 <style scoped lang='less'>
 .articleList{
-  padding-bottom: 100px;
-}
-.label-box{
-  span:nth-child(2){
-    margin: 0 8px;
-  }
+  height: 80vh;
+  overflow-y: scroll;
 }
 
 </style>

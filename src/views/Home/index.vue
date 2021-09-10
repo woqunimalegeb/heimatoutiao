@@ -13,27 +13,39 @@
   </van-tab>
 
   <template #nav-right>
-    <div class="right-btn">
+    <div class="right-btn" @click="isShowEditPopup=true">
       <i class="toutiao toutiao-gengduo"></i>
     </div>
     <div class="placeholder-box"></div>
   </template>
 </van-tabs>
+<van-popup
+ closeable
+ close-icon-position='top-left'
+ v-model="isShowEditPopup"
+ position="bottom"
+:style="{ height: '90%' }"
+  >
+  <ChannelEdit @update-active='onUpdateActive' :myChannels="channels" :activeIndex='active'/>
+  </van-popup>
   </div>
 </template>
 
 <script>
+import ChannelEdit from './components/ChannelEdit.vue'
 import { getUserChannels } from '@/api/user.js'
 import ArticleList from './components/ArticleList.vue'
 import { Toast } from 'vant'
+import { getItem } from '@/utils/storage.js'
 export default {
   data () {
     return {
       active: 0,
-      channels: []
+      channels: [],
+      isShowEditPopup: false
     }
   },
-  components: { ArticleList },
+  components: { ArticleList, ChannelEdit },
   created () {
     this.loadUserchannels()
   },
@@ -41,11 +53,21 @@ export default {
   methods: {
     async loadUserchannels () {
       try {
-        const res = await getUserChannels()
-        this.channels = res.channels
+        const localChannel = getItem('HMTT-CHANNELS')
+        if (!this.$store.state.user && localChannel) {
+          this.channels = localChannel
+        } else {
+          const res = await getUserChannels()
+          this.channels = res.channels
+        }
       } catch (err) {
+        console.log(err)
         Toast('系统异常')
       }
+    },
+    onUpdateActive (val, isshow) {
+      this.active = val
+      this.isShowEditPopup = isshow
     }
   }
 }
