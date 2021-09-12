@@ -9,7 +9,7 @@ request.interceptors.request.use(config => {
   if (store.state.user) {
     config.headers.Authorization = 'Bearer ' + store.state.user.token
   }
-  if (config.url !== '/v1_1/articles') {
+  if (config.url !== '/v1_1/articles' && config.uri !== '/v1-0/search') {
     Toast.loading({
       message: '加载中...',
       duration: 0,

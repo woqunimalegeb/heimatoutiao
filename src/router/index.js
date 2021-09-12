@@ -6,6 +6,7 @@ import Home from '@/views/Home'
 import Qa from '@/views/Qa'
 import Video from '@/views/Video'
 import Profile from '@/views/Profile'
+import Search from '@/views/Search'
 Vue.use(VueRouter)
 
 const routes = [
@@ -35,6 +36,11 @@ const routes = [
         component: Profile
       }
     ]
+
+  },
+  {
+    path: '/search',
+    component: Search
   }
 ]
 
