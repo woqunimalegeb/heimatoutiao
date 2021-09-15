@@ -11,7 +11,7 @@
 >
 <ArticleItem
 v-for="item in list"
-:key="item.art_id"
+:key="item.art_id+''"
 :articleItem='item'/>
 
 </van-list>
@@ -39,7 +39,8 @@ export default {
   props: {
     channelId: {
       type: Number,
-      required: true
+      required: true,
+      is404: false
     }
   },
   created () {

@@ -7,6 +7,7 @@ import Qa from '@/views/Qa'
 import Video from '@/views/Video'
 import Profile from '@/views/Profile'
 import Search from '@/views/Search'
+import Article from '@/views/Article'
 Vue.use(VueRouter)
 
 const routes = [
@@ -37,6 +38,11 @@ const routes = [
       }
     ]
 
+  },
+  {
+    path: '/article/:articleId',
+    component: Article,
+    props: true
   },
   {
     path: '/search',

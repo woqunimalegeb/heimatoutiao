@@ -10,7 +10,7 @@
     <van-icon @click="isDel=true" v-else name="delete-o"/>
   </template>
 </van-cell>
-<van-cell :title="item" :key="item" v-for="item in history" @click="onClickHistoryItem(index,i)">
+<van-cell :title="item" :key="item" v-for="(item,index) in history" @click="onClickHistoryItem(index)">
   <!-- 使用 right-icon 插槽来自定义右侧图标 -->
   <template>
     <van-icon name="close" v-if="isDel" />

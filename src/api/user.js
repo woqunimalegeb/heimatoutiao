@@ -24,3 +24,18 @@ export const getUserChannels = () => {
     method: 'GET'
   })
 }
+export const addFollowUser = target => {
+  return request({
+    url: '/v1_0/user/followings',
+    method: 'POST',
+    data: {
+      target
+    }
+  })
+}
+export const removeFollowUser = target => {
+  return request({
+    url: '/v1_0/user/followings/' + target,
+    method: 'DELETE'
+  })
+}

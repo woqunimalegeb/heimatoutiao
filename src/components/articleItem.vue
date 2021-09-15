@@ -1,6 +1,6 @@
 <template>
   <div>
-<van-cell>
+<van-cell :to="'/article/'+articleItem.art_id">
 <template #title>
   <div class="van-multi-ellipsis--l2">
     {{articleItem.title}}
