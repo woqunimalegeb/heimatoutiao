@@ -39,3 +39,9 @@ export const removeFollowUser = target => {
     method: 'DELETE'
   })
 }
+export const getUserProfile = () => {
+  return request({
+    url: '/v1_0/user/profile',
+    method: 'GET'
+  })
+}

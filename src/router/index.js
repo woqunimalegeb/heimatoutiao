@@ -8,6 +8,7 @@ import Video from '@/views/Video'
 import Profile from '@/views/Profile'
 import Search from '@/views/Search'
 import Article from '@/views/Article'
+import User from '../user/index.vue'
 Vue.use(VueRouter)
 
 const routes = [
@@ -47,6 +48,10 @@ const routes = [
   {
     path: '/search',
     component: Search
+  },
+  {
+    path: '/user',
+    component: User
   }
 ]
 
